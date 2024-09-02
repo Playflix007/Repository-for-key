@@ -1,13 +1,7 @@
 {
   "functions": {
-    "api/fetchKeys.js": {
+    "api/hello.js": {
       "runtime": "nodejs18.x"
     }
-  },
-  "routes": [
-    {
-      "src": "/api/fetchKeys",
-      "dest": "/api/fetchKeys.js"
-    }
-  ]
+  }
 }
