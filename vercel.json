@@ -1,9 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/fetchKeys.js", "use": "@vercel/node" }
-  ],
+  "functions": {
+    "api/fetchKeys.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
-    { "src": "/api/fetchKeys", "dest": "/api/fetchKeys.js" }
+    {
+      "src": "/api/fetchKeys",
+      "dest": "/api/fetchKeys.js"
+    }
   ]
 }
