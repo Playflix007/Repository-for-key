@@ -1,29 +1,35 @@
 const express = require('express');
-const axios = require('axios'); // For making HTTP requests
+const axios = require('axios');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-const API_URL = 'https://babel-in.xyz/babel-b2ef9ad8f0d432962d47009b24dee465/tata/channels'; // Your API URL
-
-// Route for license keys
-app.get('/keys', async (req, res) => {
+// Function to fetch keys for a specific channel
+const fetchKeysForChannel = async (channelId) => {
   try {
-    const response = await axios.get(API_URL);
-    const keys = response.data; // Adjust this based on the actual API response structure
-
-    // Extract key ID and key value
-    const formattedKeys = keys.map(item => ({
-      keyId: item.kid,
-      keyValue: item.k
-    }));
-
-    res.json(formattedKeys);
+    const response = await axios.get(`https://babel-in.xyz/babel-b2ef9ad8f0d432962d47009b24dee465/tata/channels/${channelId}`);
+    return response.data;
   } catch (error) {
-    console.error('Error fetching keys:', error);
-    res.status(500).send('Error fetching keys');
+    throw new Error(`Error fetching keys for channel ${channelId}`);
+  }
+};
+
+// Endpoint to fetch keys for all channels
+app.get('/keys', async (req, res) => {
+  const channelIds = ['channel1', 'channel2', 'channel3']; // Replace with your actual channel IDs
+  const keys = {};
+
+  try {
+    for (const channelId of channelIds) {
+      const data = await fetchKeysForChannel(channelId);
+      keys[channelId] = data.channel_key;
+    }
+    res.json(keys);
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
