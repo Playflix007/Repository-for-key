@@ -1,9 +1,12 @@
 {
   "version": 2,
+  "functions": {
+    "api/fetchKeys.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  },
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/keys", "dest": "/server.js" }
+    { "src": "api/fetchKeys.js", "use": "@vercel/node" }
   ]
 }
