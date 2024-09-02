@@ -1,6 +1,7 @@
 {
+  "version": 2,
   "functions": {
-    "api/hello.js": {
+    "api/*.js": {
       "runtime": "nodejs18.x"
     }
   }
