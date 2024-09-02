@@ -1,12 +1,10 @@
 {
-  "name": "license-keys-host",
+  "name": "license-key-fetcher",
   "version": "1.0.0",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "vercel dev"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "axios": "^0.21.1"
+    "axios": "^1.2.3"  // Use the latest version of axios
   }
 }
