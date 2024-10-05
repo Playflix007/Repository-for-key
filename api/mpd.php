@@ -5,7 +5,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : '';
 // Check if id is not empty, then proceed with the redirection
 if (!empty($id)) {
     // Redirect to the new URL with the dynamic id
-    header("Location: https://tplay.yuvraj49.in/tp/_____________/manifest.mpd?id=$id");
+    header("Location: https://tplay.yuvraj49.in/tp/gflhtIE007Bh/manifest.mpd?id=$id");
     exit;
 } else {
     // If no id is provided, you can handle the error or redirect to a default page
